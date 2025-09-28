@@ -3,7 +3,6 @@
 A minimal, dark-themed weather dashboard with an interactive **OpenStreetMap (OSM)** map (via **Leaflet**).  
 Pick a location by **searching** or **clicking on the map** and view **current weather**, **air quality**, and the **5‑day / 3‑hour forecast** — with clean vector **icons by Weather Icons**.
 
-- Dark theme color: **`#111827`**
 - 100% **client-side** (no backend). Your API key is stored in your browser’s `localStorage`.
 - Built with **HTML, CSS, and JavaScript**
 
@@ -11,11 +10,7 @@ Pick a location by **searching** or **clicking on the map** and view **current w
 
 ## 🎥 Demo
 
-(Optional) Add a GIF or screenshot of the app here:
-
-
 ![Demo](Intro.gif)
-
 
 ---
 
@@ -31,7 +26,6 @@ Pick a location by **searching** or **clicking on the map** and view **current w
 - ⚙️ **Settings dialog** for: API key, units (metric/imperial/standard), and initial city
 - 💾 Preferences persisted in `localStorage`
 
-> **Note:** This project intentionally **does not** include hourly charts or precipitation charts.
 
 ---
 
@@ -109,11 +103,7 @@ python -m http.server 5500
 
 ## 🌐 Live Demo (GitHub Pages)
 
-When you enable **GitHub Pages** for this repository (Settings → Pages → *Deploy from a branch*, `main`, `/ (root)`), your app will be accessible at:
-
-```
-https://hadiiemami.github.io/weather-dashboard/
-```
+👉 [Try it online here](https://hadiiemami.github.io/weather-dashboard/)
 
 ---
 
@@ -135,7 +125,7 @@ For a public deployment where you want to hide a key, consider a tiny proxy (Clo
 
 ## 📜 License
 
-This project’s code is under the **MIT License** (unless you choose otherwise).  
+This project’s code is under the **MIT License**.  
 Weather Icons are © Erik Flowers and contributors (see their license).  
 OpenStreetMap tiles © OpenStreetMap contributors.
 
