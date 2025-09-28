@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weather Dashboard</title>
+
+  <!-- Weather Icons (Erik Flowers) -->
+  <!-- Place the weather-icons-master folder next to index.html, then this path will work -->
+  <link rel="stylesheet" href="weather-icons-master/css/weather-icons.min.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Weather Dashboard</div>
+    <nav class="nav">
+      <button id="openSettings" class="btn secondary">Settings</button>
+      <a class="link" href="https://openweathermap.org/api" target="_blank" rel="noreferrer">OpenWeather API</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Search -->
+    <section class="card">
+      <form id="searchForm" class="row" role="search" autocomplete="off">
+        <input id="searchInput" type="search" placeholder="Search a place (city, address)" aria-label="Search place" />
+        <button type="submit" class="btn">Search</button>
+        <small class="muted">Tip: click on map to pick a point</small>
+      </form>
+      <div id="searchResults" class="search-results hidden"></div>
+    </section>
+
+    <div class="layout">
+      <section class="card">
+        <header class="card-head">
+          <strong>Map</strong>
+          <span id="currentLoc" class="pill">—</span>
+        </header>
+        <div id="map" role="img" aria-label="Map"></div>
+        <footer class="card-foot">
+          <small class="muted">Click on the map to update the location. Marker popup shows quick stats.</small>
+          <small id="coordText" class="muted"></small>
+        </footer>
+      </section>
+
+      <section class="right-col">
+        <article class="card">
+          <header class="card-head">
+            <strong>Current Weather</strong>
+            <span id="updatedAt" class="muted"></span>
+          </header>
+
+          <div class="current-wrap">
+            <i id="weatherIcon" class="wi wi-na icon-xl" aria-hidden="true"></i>
+            <div class="metrics">
+              <div>Temp: <strong id="temp">—</strong></div>
+              <div>Feels like: <strong id="feels">—</strong></div>
+              <div>Humidity: <strong id="humidity">—</strong></div>
+              <div>Wind: <strong id="wind">—</strong></div>
+              <div>Clouds: <strong id="clouds">—</strong></div>
+              <div>Pressure: <strong id="pressure">—</strong></div>
+              <div>Sunrise: <strong id="sunrise">—</strong></div>
+              <div>Sunset: <strong id="sunset">—</strong></div>
+            </div>
+          </div>
+
+          <details class="details">
+            <summary>Raw condition</summary>
+            <pre id="conditionText" class="raw"></pre>
+          </details>
+        </article>
+
+        <article class="card">
+          <header class="card-head">
+            <strong>Air Quality</strong>
+            <small id="aqiLabel" class="pill">—</small>
+          </header>
+          <div class="metrics">
+            <div>PM2.5: <strong id="pm25">—</strong></div>
+            <div>PM10: <strong id="pm10">—</strong></div>
+            <div>NO₂: <strong id="no2">—</strong></div>
+            <div>O₃: <strong id="o3">—</strong></div>
+            <div>SO₂: <strong id="so2">—</strong></div>
+            <div>CO: <strong id="co">—</strong></div>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <section class="card">
+      <header class="card-head">
+        <strong>5-day / 3-hour forecast</strong>
+        <small class="muted">Scroll to see all</small>
+      </header>
+      <div id="forecastList" class="forecast-list"></div>
+    </section>
+
+    <p class="note">This is a client-side app. Your API key is stored in your browser's localStorage. For public deployments, consider a small proxy to keep your key private.</p>
+  </main>
+
+  <!-- Settings modal -->
+  <dialog id="settingsDialog" class="dialog">
+    <article>
+      <header class="dialog-head"><strong>Settings</strong></header>
+      <form id="settingsForm" class="dialog-body">
+        <label>OpenWeather API key
+          <input type="password" id="apiKeyInput" placeholder="Paste your API key" required />
+        </label>
+        <label>Units
+          <select id="unitsSelect">
+            <option value="metric">Metric (°C, m/s)</option>
+            <option value="imperial">Imperial (°F, mph)</option>
+            <option value="standard">Standard (K, m/s)</option>
+          </select>
+        </label>
+        <label>Initial location (city name)
+          <input type="text" id="defaultCityInput" placeholder="e.g., Baku" />
+        </label>
+        <footer class="dialog-foot">
+          <button type="button" class="btn secondary" id="closeSettings">Close</button>
+          <button type="submit" class="btn">Save</button>
+        </footer>
+      </form>
+    </article>
+  </dialog>
+
+  <!-- Libraries -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- App JS -->
+  <script src="js/app.js"></script>
+</body>
+</html>
