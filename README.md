@@ -13,9 +13,9 @@ Pick a location by **searching** or **clicking on the map** and view **current w
 
 (Optional) Add a GIF or screenshot of the app here:
 
-```
-!(Intro.gif)
-```
+
+![Demo](Intro.gif)
+
 
 ---
 
